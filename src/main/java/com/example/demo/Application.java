@@ -2,10 +2,15 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @SpringBootApplication
+@EnableScheduling
 @RestController
 public class Application {
 
@@ -18,6 +23,11 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+
+    @Scheduled(fixedDelay = 2000)
+    public void scheduleRun(){
+        System.out.println("Current Scheduled Time" + new Date());
+    }
 }
 
 
